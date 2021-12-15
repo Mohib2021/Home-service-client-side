@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Header from "./components/Shared/Header/Header";
 import Footer from "./components/Shared/Footer/Footer";
+import Login from "./components/Pages/Login/Login";
 function App() {
 	return (
 		<Router>
@@ -12,6 +13,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />}></Route>
 				<Route path="/home" element={<Home />}></Route>
+				<Route path="/login" element={<Login />}></Route>
 			</Routes>
 			<Footer />
 		</Router>

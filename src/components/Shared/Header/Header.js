@@ -29,7 +29,7 @@ function Header() {
 						<Nav.Link as={Link} to="/dashboard">
 							Dashboard
 						</Nav.Link>
-						<Nav.Link as={Link} to="">
+						<Nav.Link as={Link} to="./login">
 							<button className="btn fw-bold btn-primary">Login</button>
 						</Nav.Link>
 					</div>
