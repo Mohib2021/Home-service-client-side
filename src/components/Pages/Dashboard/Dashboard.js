@@ -19,22 +19,23 @@ import Typography from "@mui/material/Typography";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import style from "./Dashboard.module.css";
+import { Link, useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 const dashboardItem = [
-	"Home",
-	"Order List",
-	"Pay",
-	"Review",
-	"Handle Service",
-	"Add Service",
-	"Manage Booking",
+	{ name: "Home", route: "/home" },
+	{ name: "Order List", route: "/home" },
+	{ name: "Pay", route: "/home" },
+	{ name: "Review", route: "/home" },
+	{ name: "Handle Service", route: "/home" },
+	{ name: "Add Service", route: "/home" },
+	{ name: "Manage Booking", route: "/home" },
 ];
 function Dashboard(props) {
 	const menuBar = <FontAwesomeIcon icon={faBars} />;
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
-
+	const navigate = useNavigate();
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
@@ -52,10 +53,12 @@ function Dashboard(props) {
 			<List>
 				{dashboardItem.map((item) => {
 					return (
-						<p className="text-center fw-bold" key={item}>
-							<a className="text-decoration-none text-white" href="#">
-								{item}
-							</a>
+						<p
+							onClick={() => navigate(item.route)}
+							className={`text-center fw-bold ${style.item}`}
+							key={item.name}
+						>
+							<a className="text-decoration-none ">{item.name}</a>
 						</p>
 					);
 				})}

@@ -1,0 +1,10 @@
+.item {
+	border-bottom: 1px dotted white;
+	padding: 10px 0px;
+}
+.item > a {
+	color: white;
+}
+.item:hover > a {
+	color: #0d6efd;
+}
