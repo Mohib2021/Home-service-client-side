@@ -41,14 +41,14 @@ function Header() {
 								</button>
 							</Nav.Link>
 						) : (
-							<Nav.Link as={Link} to="./login">
+							<Nav.Link as={Link} to="/login">
 								<button className="btn fw-bold btn-outline-primary">
 									Login
 								</button>
 							</Nav.Link>
 						)}
 						{!user.displayName && (
-							<Nav.Link as={Link} to="./signUp">
+							<Nav.Link as={Link} to="/signUp">
 								<button className="btn fw-bold btn-outline-primary">
 									SignUp
 								</button>

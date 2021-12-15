@@ -2,6 +2,8 @@ import React from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import Footer from "../../Shared/Footer/Footer";
+import Header from "../../Shared/Header/Header";
 import style from "./Login.module.css";
 function Login() {
 	const location = useLocation();
@@ -31,6 +33,7 @@ function Login() {
 
 	return (
 		<div>
+			<Header />
 			<Container>
 				<Row className=" my-5 form-container align-items-center justify-content-center">
 					<Col md={5}>
@@ -91,6 +94,7 @@ function Login() {
 					</Col>
 				</Row>
 			</Container>
+			<Footer />
 		</div>
 	);
 }
