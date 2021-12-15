@@ -2,7 +2,7 @@
 	width: 100px;
 }
 .formShadow {
-	box-shadow: 0px 0px 20px gray;
+	box-shadow: 0px 0px 20px rgb(167, 165, 165);
 	border-radius: 10px;
 }
 .loginImgIcon > img {

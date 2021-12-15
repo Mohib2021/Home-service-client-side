@@ -30,7 +30,12 @@ function Header() {
 							Dashboard
 						</Nav.Link>
 						<Nav.Link as={Link} to="./login">
-							<button className="btn fw-bold btn-primary">Login</button>
+							<button className="btn fw-bold btn-outline-primary">Login</button>
+						</Nav.Link>
+						<Nav.Link as={Link} to="./signUp">
+							<button className="btn fw-bold btn-outline-primary">
+								SignUp
+							</button>
 						</Nav.Link>
 					</div>
 					<div

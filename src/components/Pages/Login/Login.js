@@ -16,6 +16,9 @@ function Login() {
 									alt="logo-img"
 								/>
 							</div>
+							<div className="text-center my-4">
+								<h3 className="fw-bold">Login</h3>
+							</div>
 							<Form.Group className="mb-3" controlId="formBasicEmail">
 								<Form.Label>Email Address</Form.Label>
 								<Form.Control
@@ -50,7 +53,7 @@ function Login() {
 
 								<img
 									src="https://i.ibb.co/YNH5VxS/github.png"
-									alt="google icon"
+									alt="github icon"
 								/>
 							</div>
 						</Form>
