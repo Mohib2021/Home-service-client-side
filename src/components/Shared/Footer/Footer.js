@@ -23,7 +23,7 @@ function Footer() {
 						<div>
 							<h5 className="fw-bold">Company</h5>
 						</div>
-						<div className={style.link}>
+						<div className={`small ${style.link}`}>
 							<p>
 								<a href="">About</a>
 							</p>
@@ -46,7 +46,7 @@ function Footer() {
 						<div>
 							<h5 className="fw-bold">Quic Links</h5>
 						</div>
-						<div className={style.link}>
+						<div className={`small ${style.link}`}>
 							<p>
 								<a href="">Sales</a>
 							</p>
@@ -69,8 +69,8 @@ function Footer() {
 						<div>
 							<h5 className="fw-bold">About Us</h5>
 						</div>
-						<div className="mt-2">
-							<p>
+						<div className="">
+							<p className={`small ${style.link}`}>
 								We are one and only platform in online to help you any time in
 								your door anywhere around Bangladesh. We have proficient team
 								who are responsible to make your home attractive any time.What

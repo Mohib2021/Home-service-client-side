@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import style from "./Header.module.css";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth/useAuth";
 function Header() {
 	const [isActive, setIsActive] = useState(false);
+	const { user, logOut } = useAuth();
 	return (
 		<div className={style.position}>
 			<Navbar bg="dark" variant="dark">
@@ -29,14 +31,29 @@ function Header() {
 						<Nav.Link as={Link} to="/dashboard">
 							Dashboard
 						</Nav.Link>
-						<Nav.Link as={Link} to="./login">
-							<button className="btn fw-bold btn-outline-primary">Login</button>
-						</Nav.Link>
-						<Nav.Link as={Link} to="./signUp">
-							<button className="btn fw-bold btn-outline-primary">
-								SignUp
-							</button>
-						</Nav.Link>
+						{user.displayName ? (
+							<Nav.Link>
+								<button
+									onClick={logOut}
+									className="btn fw-bold btn-outline-danger"
+								>
+									LogOut
+								</button>
+							</Nav.Link>
+						) : (
+							<Nav.Link as={Link} to="./login">
+								<button className="btn fw-bold btn-outline-primary">
+									Login
+								</button>
+							</Nav.Link>
+						)}
+						{!user.displayName && (
+							<Nav.Link as={Link} to="./signUp">
+								<button className="btn fw-bold btn-outline-primary">
+									SignUp
+								</button>
+							</Nav.Link>
+						)}
 					</div>
 					<div
 						onClick={() => setIsActive(!isActive)}

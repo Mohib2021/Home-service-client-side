@@ -7,17 +7,20 @@ import Header from "./components/Shared/Header/Header";
 import Footer from "./components/Shared/Footer/Footer";
 import Login from "./components/Pages/Login/Login";
 import SignUp from "./components/Pages/SignUp/SignUp";
+import AuthProvider from "./components/Hooks/AuthProvider/AuthProvider";
 function App() {
 	return (
 		<Router>
-			<Header />
-			<Routes>
-				<Route path="/" element={<Home />}></Route>
-				<Route path="/home" element={<Home />}></Route>
-				<Route path="/login" element={<Login />}></Route>
-				<Route path="/signUp" element={<SignUp />}></Route>
-			</Routes>
-			<Footer />
+			<AuthProvider>
+				<Header />
+				<Routes>
+					<Route path="/" element={<Home />}></Route>
+					<Route path="/home" element={<Home />}></Route>
+					<Route path="/login" element={<Login />}></Route>
+					<Route path="/signUp" element={<SignUp />}></Route>
+				</Routes>
+				<Footer />
+			</AuthProvider>
 		</Router>
 	);
 }
