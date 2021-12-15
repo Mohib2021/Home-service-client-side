@@ -1,0 +1,13 @@
+.map {
+	width: 100%;
+}
+.link {
+	margin-top: 1rem;
+}
+.link > p {
+	line-height: 0.8rem;
+}
+.link > p > a {
+	text-decoration: none;
+	color: white;
+}
