@@ -1,6 +1,6 @@
 const dashboardRoute = [
 	{ name: "Home", route: "/home" },
-	{ name: "Order List", route: "/dashboard/orderList" },
+	{ name: "Your Order List", route: "/dashboard/orderList" },
 	{ name: "Pay", route: "/dashboard/pay" },
 	{ name: "Review", route: "/dashboard/review" },
 	{ name: "Handle Service", route: "/dashboard/handleService" },
