@@ -15,6 +15,7 @@ import HandleService from "./components/Pages/Dashboard/HandleService/HandleServ
 import AddService from "./components/Pages/Dashboard/AddService/AddService";
 import ManageBooking from "./components/Pages/Dashboard/ManageBooking/ManageBooking";
 import AllUsers from "./components/Pages/Dashboard/AllUsers/AllUsers";
+import Explore from "./components/Pages/Explore/Explore";
 function App() {
 	return (
 		<Router>
@@ -24,6 +25,7 @@ function App() {
 					<Route path="/home" element={<Home />}></Route>
 					<Route path="/login" element={<Login />}></Route>
 					<Route path="/signUp" element={<SignUp />}></Route>
+					<Route path="/explore" element={<Explore />}></Route>
 					<Route path="/dashboard" element={<Dashboard />}>
 						<Route path="/dashboard" element={<DashboardHome />} />
 						<Route path="orderList" element={<OrderList />} />
