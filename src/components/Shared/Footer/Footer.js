@@ -9,7 +9,7 @@ function Footer() {
 					<Col md={4} sm={12}>
 						<div>
 							<h5 className="fw-bold">Find Us</h5>
-							<div>
+							<div className={style.link}>
 								<iframe
 									className={style.map}
 									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14602.67863927909!2d90.39695081696188!3d23.794774936890555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70c15ea1de1%3A0x97856381e88fb311!2sBanani%20Model%20Town%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1639529792505!5m2!1sen!2sbd"

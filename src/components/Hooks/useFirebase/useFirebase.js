@@ -24,7 +24,6 @@ const useFirebase = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
 	const auth = getAuth();
-	console.log(user);
 	// get user name
 	const getUserName = (e) => {
 		const userName = e.target.value;

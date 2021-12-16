@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Carousel from "react-elastic-carousel";
+import ShowTestimonial from "./ShowTestimonial";
 const data = [
 	{ id: 1, title: "one" },
 	{ id: 2, title: "two" },
@@ -17,16 +18,24 @@ const breakPoints = [
 	{ width: 1200, itemsToShow: 4 },
 ];
 function Testimonial() {
+	const [reviews, setReviews] = useState([]);
+	useEffect(() => {
+		fetch("http://localhost:5000/reviews")
+			.then((res) => res.json())
+			.then((data) => setReviews(data));
+	}, []);
 	return (
 		<div className="my-5">
 			<Container>
+				<div className="text-center my-4">
+					<h6>Reviews</h6>
+					<h3 className="fw-bold">
+						What clients say <br /> About Us{" "}
+					</h3>
+				</div>
 				<Carousel breakPoints={breakPoints}>
-					{data.map((single) => (
-						<div key={single.id}>
-							<div>
-								<h2>{single.title}</h2>
-							</div>
-						</div>
+					{reviews.map((review) => (
+						<ShowTestimonial key={review._id} review={review} />
 					))}
 				</Carousel>
 			</Container>
