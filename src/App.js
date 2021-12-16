@@ -16,6 +16,7 @@ import AddService from "./components/Pages/Dashboard/AddService/AddService";
 import ManageBooking from "./components/Pages/Dashboard/ManageBooking/ManageBooking";
 import AllUsers from "./components/Pages/Dashboard/AllUsers/AllUsers";
 import Explore from "./components/Pages/Explore/Explore";
+import Booking from "./components/Pages/Booking/Booking";
 function App() {
 	return (
 		<Router>
@@ -26,6 +27,7 @@ function App() {
 					<Route path="/login" element={<Login />}></Route>
 					<Route path="/signUp" element={<SignUp />}></Route>
 					<Route path="/explore" element={<Explore />}></Route>
+					<Route path="/booking/:id" element={<Booking />}></Route>
 					<Route path="/dashboard" element={<Dashboard />}>
 						<Route path="/dashboard" element={<DashboardHome />} />
 						<Route path="orderList" element={<OrderList />} />
