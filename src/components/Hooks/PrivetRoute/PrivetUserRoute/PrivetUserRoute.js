@@ -1,10 +1,21 @@
+import { Spinner } from "react-bootstrap";
 import { useLocation, Navigate } from "react-router-dom";
 import useAuth from "../../useAuth/useAuth";
 
 const PrivetUserRoute = ({ children }) => {
-	const { user } = useAuth();
+	const { user, isLoading } = useAuth();
 	const location = useLocation();
-	console.log(location);
+	if (isLoading) {
+		return (
+			<div
+				style={{ height: "80vh" }}
+				className="mt-5 d-flex align-items-center justify-content-center"
+			>
+				<h4 className="me-2">Loading...</h4>
+				<Spinner animation="border" variant="dark" />
+			</div>
+		);
+	}
 	if (user.displayName) {
 		return children;
 	} else {

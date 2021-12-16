@@ -45,7 +45,7 @@ function Dashboard(props) {
 							className={`text-center fw-bold ${style.item}`}
 							key={item.name}
 						>
-							<a className="text-decoration-none ">{item.name}</a>
+							<span className="text-decoration-none ">{item.name}</span>
 						</p>
 					);
 				})}

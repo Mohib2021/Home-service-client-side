@@ -116,7 +116,7 @@ const useFirebase = () => {
 			}
 			setIsLoading(false);
 		});
-	}, []);
+	}, [auth]);
 
 	// logOut user
 	const logOut = () => {

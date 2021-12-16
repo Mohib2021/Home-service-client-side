@@ -11,6 +11,7 @@ function Footer() {
 							<h5 className="fw-bold">Find Us</h5>
 							<div className={style.link}>
 								<iframe
+									title="Map of our office"
 									className={style.map}
 									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14602.67863927909!2d90.39695081696188!3d23.794774936890555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70c15ea1de1%3A0x97856381e88fb311!2sBanani%20Model%20Town%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1639529792505!5m2!1sen!2sbd"
 									loading="lazy"
@@ -25,19 +26,19 @@ function Footer() {
 						</div>
 						<div className={`small ${style.link}`}>
 							<p>
-								<a href="">About</a>
+								<span href="#">About</span>
 							</p>
 							<p>
-								<a href=""> Our Project</a>
+								<span href="#"> Our Project</span>
 							</p>
 							<p>
-								<a href=""> Our Team</a>
+								<span href="#"> Our Team</span>
 							</p>
 							<p>
-								<a href="">Terms Conditions</a>
+								<span href="#">Terms Conditions</span>
 							</p>
 							<p>
-								<a href="">Submitting List</a>
+								<span href="#">Submitting List</span>
 							</p>
 						</div>
 					</Col>
@@ -48,19 +49,19 @@ function Footer() {
 						</div>
 						<div className={`small ${style.link}`}>
 							<p>
-								<a href="">Sales</a>
+								<span href="#">Sales</span>
 							</p>
 							<p>
-								<a href="">Average Rate</a>
+								<span href="#">Average Rate</span>
 							</p>
 							<p>
-								<a href=""> Our Blogs</a>
+								<span href="#"> Our Blogs</span>
 							</p>
 							<p>
-								<a href="">Rentals</a>
+								<span href="#">Rentals</span>
 							</p>
 							<p>
-								<a href="">Contacts Us</a>
+								<span href="#">Contacts Us</span>
 							</p>
 						</div>
 					</Col>
