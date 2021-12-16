@@ -17,12 +17,13 @@ import ManageBooking from "./components/Pages/Dashboard/ManageBooking/ManageBook
 import AllUsers from "./components/Pages/Dashboard/AllUsers/AllUsers";
 import Explore from "./components/Pages/Explore/Explore";
 import Booking from "./components/Pages/Booking/Booking";
+import NotFound from "./components/Pages/NotFound/NotFound";
 function App() {
 	return (
 		<Router>
 			<AuthProvider>
 				<Routes>
-					<Route path="/" element={<Home />}></Route>
+					<Route exact path="/" element={<Home />}></Route>
 					<Route path="/home" element={<Home />}></Route>
 					<Route path="/login" element={<Login />}></Route>
 					<Route path="/signUp" element={<SignUp />}></Route>
@@ -38,6 +39,7 @@ function App() {
 						<Route path="manageBooking" element={<ManageBooking />} />
 						<Route path="allUsers" element={<AllUsers />} />
 					</Route>
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</AuthProvider>
 		</Router>

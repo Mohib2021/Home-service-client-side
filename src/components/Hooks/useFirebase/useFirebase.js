@@ -51,14 +51,38 @@ const useFirebase = () => {
 		});
 	};
 
+	// Send user info to Database
+	const sendUserInfoToDb = (displayName, email, photo) => {
+		const userInfo = {
+			displayName,
+			email,
+			photo,
+			role: "user",
+		};
+		console.log(userInfo);
+		fetch("http://localhost:5000/users", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(userInfo),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+			});
+	};
+
 	// register user with email and password
 	const registerWithEmailAndPassword = (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
 			createUserWithEmailAndPassword(auth, email, password)
-				.then(() => {
+				.then((result) => {
+					const user = result.user;
+					setUser(user);
 					updateUserName();
-					// sendUserInfoToDb();
+					sendUserInfoToDb(user.displayName, user.email, user.photoURL);
 					setError("");
 					e.target.reset();
 					navigate("/home");
@@ -78,7 +102,8 @@ const useFirebase = () => {
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
 				const user = result.user;
-				console.log(user);
+				sendUserInfoToDb(user.displayName, user.email, user.photoURL);
+				navigate("/home");
 			})
 			.catch((error) => setError(error.message));
 	};
