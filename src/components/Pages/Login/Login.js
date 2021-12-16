@@ -8,6 +8,7 @@ import style from "./Login.module.css";
 function Login() {
 	const location = useLocation();
 	const redirectURL = location?.state?.from || "/home";
+	console.log(redirectURL);
 	const {
 		error,
 		getUserEmail,
@@ -79,7 +80,7 @@ function Login() {
 								className={`d-flex justify-content-center ${style.loginImgIcon}`}
 							>
 								<img
-									onClick={loginWithGoogle}
+									onClick={() => loginWithGoogle(redirectURL)}
 									className="me-3"
 									src="https://i.ibb.co/GR8QvhF/google.png"
 									alt="google icon"

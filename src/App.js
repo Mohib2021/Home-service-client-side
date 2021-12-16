@@ -18,18 +18,33 @@ import AllUsers from "./components/Pages/Dashboard/AllUsers/AllUsers";
 import Explore from "./components/Pages/Explore/Explore";
 import Booking from "./components/Pages/Booking/Booking";
 import NotFound from "./components/Pages/NotFound/NotFound";
+import PrivetUserRoute from "./components/Hooks/PrivetRoute/PrivetUserRoute/PrivetUserRoute";
 function App() {
 	return (
 		<Router>
 			<AuthProvider>
 				<Routes>
-					<Route exact path="/" element={<Home />}></Route>
+					<Route path="/" element={<Home />}></Route>
 					<Route path="/home" element={<Home />}></Route>
 					<Route path="/login" element={<Login />}></Route>
 					<Route path="/signUp" element={<SignUp />}></Route>
 					<Route path="/explore" element={<Explore />}></Route>
-					<Route path="/booking/:id" element={<Booking />}></Route>
-					<Route path="/dashboard" element={<Dashboard />}>
+					<Route
+						path="/booking/:id"
+						element={
+							<PrivetUserRoute>
+								<Booking />
+							</PrivetUserRoute>
+						}
+					></Route>
+					<Route
+						path="/dashboard"
+						element={
+							<PrivetUserRoute>
+								<Dashboard />
+							</PrivetUserRoute>
+						}
+					>
 						<Route path="/dashboard" element={<DashboardHome />} />
 						<Route path="orderList" element={<OrderList />} />
 						<Route path="pay" element={<Pay />} />
@@ -39,7 +54,7 @@ function App() {
 						<Route path="manageBooking" element={<ManageBooking />} />
 						<Route path="allUsers" element={<AllUsers />} />
 					</Route>
-					<Route path="*" element={<NotFound />} />
+					<Route path="*" element={<NotFound />}></Route>
 				</Routes>
 			</AuthProvider>
 		</Router>

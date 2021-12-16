@@ -52,7 +52,7 @@ const useFirebase = () => {
 	};
 
 	// Send user info to Database
-	const sendUserInfoToDb = (displayName, email, photo) => {
+	const sendUserInfoToDb = (displayName, email, photo, method) => {
 		const userInfo = {
 			displayName,
 			email,
@@ -97,13 +97,13 @@ const useFirebase = () => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-	const loginWithGoogle = () => {
+	const loginWithGoogle = (redirectURL) => {
 		const googleProvider = new GoogleAuthProvider();
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
 				const user = result.user;
 				sendUserInfoToDb(user.displayName, user.email, user.photoURL);
-				navigate("/home");
+				navigate(redirectURL);
 			})
 			.catch((error) => setError(error.message));
 	};
