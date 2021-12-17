@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import style from "./ShowOrderList.module.css";
 
-function ShowOrderList({ data }) {
+function ShowOrderList({ button, data }) {
 	const {
 		address,
 		email,
@@ -55,11 +55,17 @@ function ShowOrderList({ data }) {
 						</Col>
 						<Col md={2} xs={6}>
 							<h6>Action</h6>
-							<div className="d-flex">
-								<button className="btn px-2 me-1 btn-danger">Cancel</button>{" "}
-								<br />
-								<button className="btn px-2 btn-success">Shipped</button>
-							</div>
+							{button.length > 1 ? (
+								<div className="d-flex">
+									<button className="btn px-2 me-1 btn-danger">
+										{button[0]}
+									</button>{" "}
+									<br />
+									<button className="btn px-2 btn-success">{button[1]}</button>
+								</div>
+							) : (
+								<button className="btn btn-danger">{button[0]}</button>
+							)}
 						</Col>
 					</Row>
 				</div>
