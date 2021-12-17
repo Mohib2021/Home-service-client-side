@@ -10,7 +10,8 @@ function Review() {
 		<div className="mt-4 mb-5">
 			<Container>
 				<div className="text-center mb-4">
-					<h3>Please give us a review</h3>
+					<h6>Please</h6>
+					<h3>Give us a review</h3>
 				</div>
 				<Row className=" g-4 align-items-center">
 					<Col md={6} sm={12}>

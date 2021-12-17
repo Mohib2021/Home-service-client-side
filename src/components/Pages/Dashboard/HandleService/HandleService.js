@@ -14,7 +14,8 @@ function HandleService() {
 		<div className="mb-5">
 			<Container>
 				<div className="my-4 text-center">
-					<h3>Handle All Of the Services</h3>
+					<h6>Handle </h6>
+					<h3>All Of the Services</h3>
 				</div>
 				<Row className="g-4">
 					{services.map((service) => (
