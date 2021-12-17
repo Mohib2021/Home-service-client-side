@@ -1,32 +1,68 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import style from "./AddService.module.css";
 function AddService() {
+	const nameRef = useRef();
+	const priceRef = useRef();
+	const descRef = useRef();
+	const imgRef = useRef();
+	const handleAddService = (e) => {
+		e.preventDefault();
+		const name = nameRef.current.value;
+		const price = priceRef.current.value;
+		const description = descRef.current.value;
+		const photo = imgRef.current.files[0];
+		const formData = new FormData();
+		formData.append("name", name);
+		formData.append("price", price);
+		formData.append("description", description);
+		formData.append("photo", photo);
+
+		fetch("http://localhost:5000/services", {
+			method: "POST",
+			body: formData,
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+			});
+	};
 	return (
 		<div className="my-5">
 			<Container>
 				<Row className="justify-content-center align-items-center">
 					<Col md={6} sm={12}>
-						<form className={style.form} action="">
+						<form className={style.form} onSubmit={handleAddService}>
 							<div className="text-center mb-4">
 								<h3>Add a Service here</h3>
 							</div>
 							<input
+								ref={nameRef}
 								placeholder="Service name"
 								type="text"
 								className="form-control mb-3"
+								required
 							/>
 							<input
+								ref={priceRef}
 								placeholder="Price"
-								type="text"
+								type="number"
+								className="form-control mb-3"
+								required
+							/>
+							<input
+								required
+								ref={imgRef}
+								type="file"
 								className="form-control mb-3"
 							/>
-							<input type="file" className="form-control mb-3" />
 							<textarea
+								ref={descRef}
 								cols="30"
 								rows="7"
 								placeholder="Description"
 								className="mb-3 form-control"
+								required
 							></textarea>
 							<input
 								type="submit"

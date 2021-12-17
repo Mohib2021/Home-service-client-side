@@ -85,11 +85,6 @@ function Login() {
 									src="https://i.ibb.co/GR8QvhF/google.png"
 									alt="google icon"
 								/>
-
-								<img
-									src="https://i.ibb.co/YNH5VxS/github.png"
-									alt="github icon"
-								/>
 							</div>
 						</Form>
 					</Col>

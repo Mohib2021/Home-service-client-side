@@ -9,6 +9,8 @@ function Service() {
 			.then((res) => res.json())
 			.then((data) => setServices(data));
 	}, []);
+	services.splice(6, services.length);
+	console.log(services);
 	return (
 		<div className="my-5">
 			<Container>

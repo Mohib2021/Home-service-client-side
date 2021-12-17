@@ -99,12 +99,6 @@ function SignUp() {
 										src="https://i.ibb.co/GR8QvhF/google.png"
 										alt="google icon"
 									/>
-									<img
-										// onClick={signUpUsingGitHub}
-										style={{ width: "70px", cursor: "pointer" }}
-										src="https://i.ibb.co/YNH5VxS/github.png"
-										alt="github icon"
-									/>
 								</div>
 							</Form>
 						</Col>

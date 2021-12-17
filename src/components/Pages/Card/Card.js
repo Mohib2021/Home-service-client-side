@@ -8,7 +8,11 @@ function Card({ data, btnTxt }) {
 	return (
 		<Col md={4} sm={12}>
 			<div className={style.card}>
-				<img src={photo} className="img-fluid rounded" alt="service" />
+				<img
+					src={photo.length < 400 ? photo : "data:image/jpeg;base64," + photo}
+					className="img-fluid rounded"
+					alt="service"
+				/>
 				<h4 className="mt-2">{name}</h4>
 				<p>{description}</p>
 				<h5>${price}</h5>
