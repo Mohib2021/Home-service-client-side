@@ -13,12 +13,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import style from "./Dashboard.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
-import dashboardRoute from "./DashboardRoute/DashboardRoute";
+import userDashboardRoute from "./DashboardRoute/DashboardRoute";
+import { adminDashboardRoute } from "./DashboardRoute/DashboardRoute";
 import Footer from "../../Shared/Footer/Footer";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const drawerWidth = 300;
 
 function Dashboard(props) {
+	const [users, setUsers] = React.useState([]);
+	const { user } = useAuth();
+	React.useEffect(() => {
+		fetch("http://localhost:5000/users")
+			.then((res) => res.json())
+			.then((data) => setUsers(data));
+	}, []);
+	// getting current user to show role
+	const currentUser = users.find((curUser) => curUser.email === user.email);
+
 	const menuBar = <FontAwesomeIcon icon={faBars} />;
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -38,17 +50,35 @@ function Dashboard(props) {
 			</div>
 			<Divider />
 			<List>
-				{dashboardRoute.map((item) => {
-					return (
-						<p
-							onClick={() => navigate(item.route)}
-							className={`text-center fw-bold ${style.item}`}
-							key={item.name}
-						>
-							<span className="text-decoration-none ">{item.name}</span>
-						</p>
-					);
-				})}
+				{currentUser?.role === "user" ? (
+					<div>
+						{userDashboardRoute.map((item) => {
+							return (
+								<p
+									onClick={() => navigate(item.route)}
+									className={`text-center fw-bold ${style.item}`}
+									key={item.name}
+								>
+									<span className="text-decoration-none ">{item.name}</span>
+								</p>
+							);
+						})}
+					</div>
+				) : (
+					<div>
+						{adminDashboardRoute.map((item) => {
+							return (
+								<p
+									onClick={() => navigate(item.route)}
+									className={`text-center fw-bold ${style.item}`}
+									key={item.name}
+								>
+									<span className="text-decoration-none ">{item.name}</span>
+								</p>
+							);
+						})}
+					</div>
+				)}
 			</List>
 		</div>
 	);

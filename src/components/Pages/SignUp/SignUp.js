@@ -11,6 +11,7 @@ function SignUp() {
 		error,
 		getUserName,
 		getUserEmail,
+		getUserImage,
 		loginWithGoogle,
 		getUserPassword,
 		getConfirmPassword,
@@ -45,6 +46,7 @@ function SignUp() {
 										onChange={getUserName}
 										type="name"
 										placeholder="Name"
+										required
 									/>
 								</Form.Group>
 								<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -53,6 +55,7 @@ function SignUp() {
 										onChange={getUserEmail}
 										type="email"
 										placeholder="Enter email"
+										required
 									/>
 								</Form.Group>
 
@@ -62,6 +65,7 @@ function SignUp() {
 										onChange={getUserPassword}
 										type="password"
 										placeholder="Password"
+										required
 									/>
 								</Form.Group>
 								<Form.Group
@@ -73,11 +77,12 @@ function SignUp() {
 										onChange={getConfirmPassword}
 										type="password"
 										placeholder="Re-enter Password"
+										required
 									/>
 								</Form.Group>
 								<Form.Group className="mb-3" controlId="formBasicConfirmImg">
 									<Form.Label>Your Image</Form.Label>
-									<Form.Control type="file" />
+									<Form.Control onChange={getUserImage} type="file" required />
 								</Form.Group>
 								<Button className="w-100" variant="dark" type="submit">
 									Sign up

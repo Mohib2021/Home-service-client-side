@@ -7,7 +7,6 @@ import Login from "./components/Pages/Login/Login";
 import SignUp from "./components/Pages/SignUp/SignUp";
 import AuthProvider from "./components/Hooks/AuthProvider/AuthProvider";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
-import DashboardHome from "./components/Pages/Dashboard/DashboardHome/DashboardHome";
 import OrderList from "./components/Pages/Dashboard/OrderList/OrderList";
 import Pay from "./components/Pages/Dashboard/Pay/Pay";
 import Review from "./components/Pages/Dashboard/Review/Review";
@@ -45,7 +44,7 @@ function App() {
 							</PrivetUserRoute>
 						}
 					>
-						<Route path="/dashboard" element={<DashboardHome />} />
+						<Route path="/dashboard" element={<Review />} />
 						<Route path="orderList" element={<OrderList />} />
 						<Route path="pay" element={<Pay />} />
 						<Route path="review" element={<Review />} />

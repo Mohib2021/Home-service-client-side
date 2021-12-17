@@ -20,6 +20,7 @@ const useFirebase = () => {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [email, setEmail] = useState("");
+	const [image, setImage] = useState(null);
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
@@ -33,6 +34,11 @@ const useFirebase = () => {
 	const getUserEmail = (e) => {
 		const userEmail = e.target.value;
 		setEmail(userEmail);
+	};
+	// get user Image
+	const getUserImage = (e) => {
+		const image = e.target.files[0];
+		setImage(image);
 	};
 	// get user password
 	const getUserPassword = (e) => {
@@ -51,8 +57,8 @@ const useFirebase = () => {
 		});
 	};
 
-	// Send user info to Database
-	const sendUserInfoToDb = (displayName, email, photo, method) => {
+	// Send google user info to Database
+	const sendUserInfoToDb = (displayName, email, photo) => {
 		const userInfo = {
 			displayName,
 			email,
@@ -70,6 +76,29 @@ const useFirebase = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
+			})
+			.catch((err) => setError(err.message));
+	};
+	console.log(user);
+	// send signUp user info to db
+	const sendSignUpUserToDb = () => {
+		const formData = new FormData();
+		formData.append("displayName", name);
+		formData.append("email", email);
+		formData.append("photo", image);
+		formData.append("role", "user");
+
+		fetch("http://localhost:5000/users", {
+			method: "POST",
+			body: formData,
+		})
+			.then((response) => response.json())
+			.then((result) => {
+				console.log("Success:", result);
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+				setError(error.message);
 			});
 	};
 
@@ -82,7 +111,7 @@ const useFirebase = () => {
 					const user = result.user;
 					setUser(user);
 					updateUserName();
-					sendUserInfoToDb(user.displayName, user.email, user.photoURL);
+					sendSignUpUserToDb();
 					setError("");
 					e.target.reset();
 					navigate("/home");
@@ -136,6 +165,7 @@ const useFirebase = () => {
 		setError,
 		isLoading,
 		getUserName,
+		getUserImage,
 		setIsLoading,
 		getUserEmail,
 		loginWithGoogle,
