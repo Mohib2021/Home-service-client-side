@@ -18,6 +18,7 @@ import Explore from "./components/Pages/Explore/Explore";
 import Booking from "./components/Pages/Booking/Booking";
 import NotFound from "./components/Pages/NotFound/NotFound";
 import PrivetUserRoute from "./components/Hooks/PrivetRoute/PrivetUserRoute/PrivetUserRoute";
+import PrivetAdminRoute from "./components/Hooks/PrivetRoute/PrivetAdminRoute/PrivetAdminRoute";
 function App() {
 	return (
 		<Router>
@@ -48,10 +49,38 @@ function App() {
 						<Route path="orderList" element={<OrderList />} />
 						<Route path="pay" element={<Pay />} />
 						<Route path="review" element={<Review />} />
-						<Route path="handleService" element={<HandleService />} />
-						<Route path="addService" element={<AddService />} />
-						<Route path="manageBooking" element={<ManageBooking />} />
-						<Route path="allUsers" element={<AllUsers />} />
+						<Route
+							path="handleService"
+							element={
+								<PrivetAdminRoute>
+									<HandleService />
+								</PrivetAdminRoute>
+							}
+						/>
+						<Route
+							path="addService"
+							element={
+								<PrivetAdminRoute>
+									<AddService />
+								</PrivetAdminRoute>
+							}
+						/>
+						<Route
+							path="manageBooking"
+							element={
+								<PrivetAdminRoute>
+									<ManageBooking />
+								</PrivetAdminRoute>
+							}
+						/>
+						<Route
+							path="allUsers"
+							element={
+								<PrivetAdminRoute>
+									<AllUsers />
+								</PrivetAdminRoute>
+							}
+						/>
 					</Route>
 					<Route path="*" element={<NotFound />}></Route>
 				</Routes>
