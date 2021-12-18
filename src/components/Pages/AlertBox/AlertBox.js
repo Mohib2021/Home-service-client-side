@@ -13,7 +13,7 @@ function AlertBox({ heading, message }) {
 				<Modal.Body>{message}</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
-						Close
+						Ok
 					</Button>
 				</Modal.Footer>
 			</Modal>
