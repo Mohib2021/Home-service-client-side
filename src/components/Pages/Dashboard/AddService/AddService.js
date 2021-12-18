@@ -18,7 +18,7 @@ function AddService() {
 		formData.append("description", description);
 		formData.append("photo", photo);
 
-		fetch("http://localhost:5000/services", {
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/services", {
 			method: "POST",
 			body: formData,
 		})

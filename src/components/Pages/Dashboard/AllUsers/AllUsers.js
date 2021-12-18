@@ -5,7 +5,7 @@ import ShowAllUsers from "./ShowAllUsers/ShowAllUsers";
 function AllUsers() {
 	const [allUsers, setAllUsers] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:5000/users")
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/users")
 			.then((res) => res.json())
 			.then((data) => setAllUsers(data));
 	}, []);

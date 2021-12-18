@@ -5,7 +5,7 @@ import style from "../OrderList/OrderList.module.css";
 function ManageBooking() {
 	const [orderList, seTOrderList] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:5000/orders")
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/orders")
 			.then((res) => res.json())
 			.then((data) => seTOrderList(data));
 	}, []);

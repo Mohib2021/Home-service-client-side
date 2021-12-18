@@ -60,7 +60,7 @@ const useFirebase = () => {
 
 	// get single user
 	useEffect(() => {
-		fetch(`http://localhost:5000/users/${user.email}`)
+		fetch(`https://murmuring-lowlands-26250.herokuapp.com/users/${user.email}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setSingleUser(data);
@@ -76,7 +76,7 @@ const useFirebase = () => {
 			role: "user",
 		};
 
-		fetch("http://localhost:5000/users", {
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/users", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -98,7 +98,7 @@ const useFirebase = () => {
 		formData.append("photo", image);
 		formData.append("role", "user");
 
-		fetch("http://localhost:5000/users", {
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/users", {
 			method: "POST",
 			body: formData,
 		})

@@ -18,7 +18,7 @@ function Booking() {
 	const [service, setService] = useState({});
 	const { photo, name, price, description } = service;
 	useEffect(() => {
-		fetch(`http://localhost:5000/services/${id}`)
+		fetch(`https://murmuring-lowlands-26250.herokuapp.com/services/${id}`)
 			.then((res) => res.json())
 			.then((data) => setService(data));
 	}, [id]);
@@ -36,7 +36,7 @@ function Booking() {
 			productPrice: price,
 			status: "Pending",
 		};
-		fetch("http://localhost:5000/orders", {
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/orders", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

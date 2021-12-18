@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 function Explore() {
 	const [services, setServices] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:5000/services")
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/services")
 			.then((res) => res.json())
 			.then((data) => setServices(data));
 	}, []);

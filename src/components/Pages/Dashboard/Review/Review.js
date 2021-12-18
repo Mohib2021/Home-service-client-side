@@ -20,7 +20,7 @@ function Review() {
 			message: reviewRef.current.value,
 			rating: rating,
 		};
-		fetch("http://localhost:5000/reviews", {
+		fetch("https://murmuring-lowlands-26250.herokuapp.com/reviews", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
