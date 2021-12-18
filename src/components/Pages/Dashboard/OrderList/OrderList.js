@@ -6,17 +6,28 @@ import style from "./OrderList.module.css";
 function OrderList() {
 	const { user } = useAuth();
 	const [orderList, seTOrderList] = useState([]);
+	const handleCancelOrder = (_id) => {
+		fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
+			method: "DELETE",
+		})
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+	};
 	useEffect(() => {
 		fetch("https://murmuring-lowlands-26250.herokuapp.com/orders")
 			.then((res) => res.json())
 			.then((data) => seTOrderList(data));
-	}, []);
+	}, [handleCancelOrder]);
 	const yourOrderList = orderList.filter((order) => order.email === user.email);
-	const button = ["Cancel"];
+	const buttonAndAction = ["Cancel", handleCancelOrder];
 	const yourPlacedOrder = yourOrderList.length ? (
 		<Row className="g-4 ">
 			{yourOrderList.map((list) => (
-				<ShowOrderList key={list._id} button={button} data={list} />
+				<ShowOrderList
+					key={list._id}
+					buttonAndAction={buttonAndAction}
+					data={list}
+				/>
 			))}
 		</Row>
 	) : (

@@ -2,9 +2,10 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import style from "./Card.module.css";
-function Card({ data, btnTxt }) {
+function Card({ data, deleteService, btnTxt }) {
 	const { photo, name, price, description, _id } = data;
 	const navigate = useNavigate();
+
 	return (
 		<Col md={4} sm={12}>
 			<div className={style.card}>
@@ -17,7 +18,11 @@ function Card({ data, btnTxt }) {
 				<p>{description}</p>
 				<h5>${price}</h5>
 				<button
-					onClick={() => btnTxt === "Booking" && navigate(`/booking/${_id}`)}
+					onClick={() =>
+						btnTxt === "Booking"
+							? navigate(`/booking/${_id}`)
+							: deleteService(_id)
+					}
 					className="btn btn-outline-dark"
 				>
 					{btnTxt}

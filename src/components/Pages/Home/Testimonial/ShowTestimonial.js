@@ -3,7 +3,7 @@ import style from "./ShowTestimonial.module.css";
 import ReactStars from "react-rating-stars-component";
 function ShowTestimonial({ review }) {
 	const { name, photo, rating, message } = review;
-	console.log(rating);
+
 	return (
 		<div className={`p-1 p-md-2 ${style.review}`}>
 			<img
