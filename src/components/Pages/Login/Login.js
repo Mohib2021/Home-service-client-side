@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
+import AlertBox from "../AlertBox/AlertBox";
 import style from "./Login.module.css";
 function Login() {
 	const location = useLocation();
+
 	const redirectURL = location?.state?.from || "/home";
 	console.log(redirectURL);
 	const {
@@ -53,6 +55,7 @@ function Login() {
 							<div className="text-center my-4">
 								<h3 className="fw-bold">Login</h3>
 							</div>
+
 							<Form.Group className="mb-3" controlId="formBasicEmail">
 								<Form.Label>Email Address</Form.Label>
 								<Form.Control

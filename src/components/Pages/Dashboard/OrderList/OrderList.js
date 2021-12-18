@@ -9,11 +9,14 @@ function OrderList() {
 	const [orderList, seTOrderList] = useState([]);
 	const navigate = useNavigate();
 	const handleCancelOrder = (_id) => {
-		fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
-			method: "DELETE",
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
+		const confirmation = window.confirm("are you sure that you wan to cancel?");
+		if (confirmation) {
+			fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => console.log(data));
+		}
 	};
 
 	useEffect(() => {

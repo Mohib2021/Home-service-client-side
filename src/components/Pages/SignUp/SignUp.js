@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
+import AlertBox from "../AlertBox/AlertBox";
 import style from "./SignUp.module.css";
 function SignUp() {
 	// getting function form useFirebase by calling useAuth hook
@@ -23,6 +24,10 @@ function SignUp() {
 			<Header />
 			<div className="my-5">
 				<Container>
+					<AlertBox
+						heading="Hey, Welcome!"
+						message="Your account is created successfully."
+					/>
 					<Row className=" form-container align-items-center justify-content-center">
 						<Col md={6}>
 							<Form

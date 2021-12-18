@@ -24,6 +24,7 @@ const useFirebase = () => {
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const [singleUser, setSingleUser] = useState({});
+	const [show, setShow] = useState(false);
 	const navigate = useNavigate();
 	const auth = getAuth();
 	// get user name
@@ -124,7 +125,8 @@ const useFirebase = () => {
 					sendSignUpUserToDb();
 					setError("");
 					e.target.reset();
-					navigate("/home");
+					setShow(true);
+					// navigate("/home");
 					// created
 				})
 				.catch((err) => setError(err.message));
@@ -171,6 +173,8 @@ const useFirebase = () => {
 	return {
 		user,
 		error,
+		show,
+		setShow,
 		logOut,
 		setError,
 		isLoading,

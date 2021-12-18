@@ -8,7 +8,7 @@ function ShowTestimonial({ review }) {
 		<div className={`p-1 p-md-2 ${style.review}`}>
 			<img
 				style={{ width: "100%", height: "220px" }}
-				src={photo}
+				src={photo?.length < 400 ? photo : "data:image/jpeg;base64," + photo}
 				alt="testimonial"
 			/>
 			<h4 className="mt-2">{name}</h4>

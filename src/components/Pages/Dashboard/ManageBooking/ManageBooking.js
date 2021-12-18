@@ -5,11 +5,16 @@ import style from "../OrderList/OrderList.module.css";
 function ManageBooking() {
 	const [orderList, seTOrderList] = useState([]);
 	const handleDeleteOrder = (_id) => {
-		fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
-			method: "DELETE",
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
+		const confirmation = window.confirm(
+			"Are you sure that you want to delete?"
+		);
+		if (confirmation) {
+			fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => console.log(data));
+		}
 	};
 	// update Order status
 	const updateOrderStatus = (_id) => {

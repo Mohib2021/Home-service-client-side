@@ -63,7 +63,11 @@ function Booking() {
 							<Col md={6} sm={12}>
 								<div>
 									<img
-										src={photo}
+										src={
+											photo?.length < 400
+												? photo
+												: "data:image/jpeg;base64," + photo
+										}
 										alt="service"
 										className="img-fluid rounded"
 									/>

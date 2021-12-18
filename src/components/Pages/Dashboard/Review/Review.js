@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import useAuth from "../../../Hooks/useAuth/useAuth";
+import AlertBox from "../../AlertBox/AlertBox";
 import style from "../AddService/AddService.module.css";
 import HandleService from "../HandleService/HandleService";
 function Review() {
@@ -11,7 +12,7 @@ function Review() {
 	const ratingChanged = (newRating) => {
 		setRating(newRating);
 	};
-	const { singleUser } = useAuth();
+	const { singleUser, setShow } = useAuth();
 	const handleReviewSubmit = (e) => {
 		e.preventDefault();
 		const review = {
@@ -29,13 +30,19 @@ function Review() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				e.target.reset();
+				if (data.insertedId) {
+					setShow(true);
+				}
 			});
 	};
 	return (
 		<div className="mt-4 mb-5">
 			<Container>
+				<AlertBox
+					heading="Thank you so much"
+					message="Your review is successfully added. We appreciate your review."
+				/>
 				{singleUser.role !== "admin" ? (
 					<div>
 						<div className="text-center mb-4">
