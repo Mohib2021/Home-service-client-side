@@ -9,7 +9,7 @@ function ManageBooking() {
 			.then((res) => res.json())
 			.then((data) => seTOrderList(data));
 	}, []);
-	const button = ["Delete"];
+	const button = ["Delete", "Confirm"];
 	return (
 		<div className="my-5 ">
 			<Container>

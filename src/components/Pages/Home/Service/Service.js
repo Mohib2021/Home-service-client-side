@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import Card from "../../Card/Card";
 
 function Service() {
+	const navigate = useNavigate();
 	const [services, setServices] = useState([]);
 	useEffect(() => {
 		fetch("http://localhost:5000/services")
@@ -10,7 +12,6 @@ function Service() {
 			.then((data) => setServices(data));
 	}, []);
 	services.splice(6, services.length);
-	console.log(services);
 	return (
 		<div className="my-5">
 			<Container>
@@ -27,7 +28,9 @@ function Service() {
 					))}
 				</Row>
 				<div className="mt-4 text-center">
-					<button className="btn btn-dark">Explore More</button>
+					<button onClick={() => navigate("/explore")} className="btn btn-dark">
+						Explore More
+					</button>
 				</div>
 			</Container>
 		</div>

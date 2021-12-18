@@ -21,15 +21,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 const drawerWidth = 300;
 
 function Dashboard(props) {
-	const [users, setUsers] = React.useState([]);
-	const { user } = useAuth();
-	React.useEffect(() => {
-		fetch("http://localhost:5000/users")
-			.then((res) => res.json())
-			.then((data) => setUsers(data));
-	}, []);
-	// getting current user to show role
-	const currentUser = users.find((curUser) => curUser.email === user.email);
+	const { singleUser } = useAuth();
 
 	const menuBar = <FontAwesomeIcon icon={faBars} />;
 	const { window } = props;
@@ -50,7 +42,7 @@ function Dashboard(props) {
 			</div>
 			<Divider />
 			<List>
-				{currentUser?.role === "user" ? (
+				{singleUser?.role === "user" ? (
 					<div>
 						{userDashboardRoute.map((item) => {
 							return (

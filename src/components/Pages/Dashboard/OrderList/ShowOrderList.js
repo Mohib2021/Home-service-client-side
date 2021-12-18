@@ -12,6 +12,7 @@ function ShowOrderList({ button, data }) {
 		productName,
 		productPhoto,
 		productPrice,
+		status,
 	} = data;
 	return (
 		<>
@@ -43,7 +44,10 @@ function ShowOrderList({ button, data }) {
 							<h6>Product Info</h6>
 							<div>
 								<b>{productName}</b> <br />
-								<span>${productPrice}</span>
+								<span>${productPrice}</span> <br />
+								<span className="bg-success text-white small p-1 rounded">
+									{status}
+								</span>
 							</div>
 						</Col>
 						<Col md={2} xs={6}>

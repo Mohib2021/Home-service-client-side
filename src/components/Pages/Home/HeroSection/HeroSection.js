@@ -1,7 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import style from "./HeroSection.module.css";
 function HeroSection() {
+	const navigate = useNavigate();
 	return (
 		<div className="my-5">
 			<Container>
@@ -16,7 +18,12 @@ function HeroSection() {
 								decorated. We provide all of the services with customer's
 								satisfaction.
 							</p>
-							<button className="btn btn-dark">Ger Services</button>
+							<button
+								onClick={() => navigate("/explore")}
+								className="btn btn-dark"
+							>
+								Get Services
+							</button>
 						</div>
 					</Col>
 					<Col md={6} sm={12} className="order-0 order-md-1">

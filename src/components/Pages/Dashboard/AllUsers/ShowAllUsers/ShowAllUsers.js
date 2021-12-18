@@ -35,7 +35,7 @@ function ShowAllUsers({ data }) {
 					<Col md={1}>
 						<div className="text-center">
 							<h6>Role</h6>
-							<p className={style.role}>{role}</p>
+							<p className="bg-success text-white rounded small">{role}</p>
 						</div>
 					</Col>
 					<Col md={2}>

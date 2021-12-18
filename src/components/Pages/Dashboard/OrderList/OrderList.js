@@ -12,7 +12,7 @@ function OrderList() {
 			.then((data) => seTOrderList(data));
 	}, []);
 	const yourOrderList = orderList.filter((order) => order.email === user.email);
-	const button = ["Cancel", "Confirm"];
+	const button = ["Cancel"];
 	const yourPlacedOrder = yourOrderList.length ? (
 		<Row className="g-4 ">
 			{yourOrderList.map((list) => (

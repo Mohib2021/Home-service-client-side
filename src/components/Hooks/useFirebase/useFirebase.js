@@ -23,6 +23,7 @@ const useFirebase = () => {
 	const [image, setImage] = useState(null);
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
+	const [singleUser, setSingleUser] = useState({});
 	const navigate = useNavigate();
 	const auth = getAuth();
 	// get user name
@@ -57,6 +58,15 @@ const useFirebase = () => {
 		});
 	};
 
+	// get single user
+	useEffect(() => {
+		fetch(`http://localhost:5000/users/${user.email}`)
+			.then((res) => res.json())
+			.then((data) => {
+				setSingleUser(data);
+			});
+	}, [user.email]);
+
 	// Send google user info to Database
 	const sendUserInfoToDb = (displayName, email, photo) => {
 		const userInfo = {
@@ -65,7 +75,7 @@ const useFirebase = () => {
 			photo,
 			role: "user",
 		};
-		console.log(userInfo);
+
 		fetch("http://localhost:5000/users", {
 			method: "POST",
 			headers: {
@@ -79,7 +89,7 @@ const useFirebase = () => {
 			})
 			.catch((err) => setError(err.message));
 	};
-	console.log(user);
+
 	// send signUp user info to db
 	const sendSignUpUserToDb = () => {
 		const formData = new FormData();
@@ -164,6 +174,7 @@ const useFirebase = () => {
 		logOut,
 		setError,
 		isLoading,
+		singleUser,
 		getUserName,
 		getUserImage,
 		setIsLoading,

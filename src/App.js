@@ -19,6 +19,8 @@ import Booking from "./components/Pages/Booking/Booking";
 import NotFound from "./components/Pages/NotFound/NotFound";
 import PrivetUserRoute from "./components/Hooks/PrivetRoute/PrivetUserRoute/PrivetUserRoute";
 import PrivetAdminRoute from "./components/Hooks/PrivetRoute/PrivetAdminRoute/PrivetAdminRoute";
+import useFirebase from "./components/Hooks/useFirebase/useFirebase";
+
 function App() {
 	return (
 		<Router>
