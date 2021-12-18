@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import useAuth from "../../../Hooks/useAuth/useAuth";
+import AlertBox from "../../AlertBox/AlertBox";
 import style from "./AddService.module.css";
 function AddService() {
+	const { setShow } = useAuth();
 	const nameRef = useRef();
 	const priceRef = useRef();
 	const descRef = useRef();
@@ -24,13 +27,19 @@ function AddService() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				e.target.reset();
+				if (data.insertedId) {
+					setShow(true);
+				}
 			});
 	};
 	return (
 		<div className="my-5">
 			<Container>
+				<AlertBox
+					heading="Yes Boss !!!!!!!!!!"
+					message="Your new service is added Successfully. "
+				/>
 				<Row className="justify-content-center align-items-center">
 					<Col md={6} sm={12}>
 						<form className={style.form} onSubmit={handleAddService}>
