@@ -67,24 +67,6 @@ const useFirebase = () => {
 			});
 	}, [user.email]);
 
-	// update Order status
-	const updateOrderStatus = (_id) => {
-		const update = {
-			status: "Shipped",
-		};
-		fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(update),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-			});
-	};
-
 	// Send google user info to Database
 	const sendUserInfoToDb = (displayName, email, photo) => {
 		const userInfo = {
@@ -197,7 +179,6 @@ const useFirebase = () => {
 		getUserImage,
 		setIsLoading,
 		getUserEmail,
-		updateOrderStatus,
 		loginWithGoogle,
 		getUserPassword,
 		getConfirmPassword,

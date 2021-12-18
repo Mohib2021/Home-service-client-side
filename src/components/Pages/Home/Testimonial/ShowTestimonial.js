@@ -12,7 +12,7 @@ function ShowTestimonial({ review }) {
 				alt="testimonial"
 			/>
 			<h4 className="mt-2">{name}</h4>
-			<p className="mb-0">{message}</p>
+			<p className="mb-0 overflow-auto">{message}</p>
 			<ReactStars
 				count={5}
 				edit={false}

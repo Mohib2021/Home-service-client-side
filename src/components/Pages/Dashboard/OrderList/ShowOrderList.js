@@ -1,11 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
-import useAuth from "../../../Hooks/useAuth/useAuth";
 import style from "./ShowOrderList.module.css";
 
 function ShowOrderList({ buttonAndAction, data }) {
-	const { updateOrderStatus } = useAuth();
 	const {
 		address,
 		email,
@@ -80,7 +77,7 @@ function ShowOrderList({ buttonAndAction, data }) {
 									<br />
 									<button
 										disabled={handleBtnDisable(status)}
-										onClick={() => updateOrderStatus(_id)}
+										onClick={() => buttonAndAction[3](_id)}
 										className="btn px-2 btn-success"
 									>
 										{buttonAndAction[1]}

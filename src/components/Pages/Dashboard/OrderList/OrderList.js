@@ -3,9 +3,11 @@ import { Container, Row } from "react-bootstrap";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import ShowOrderList from "./ShowOrderList";
 import style from "./OrderList.module.css";
+import { useNavigate } from "react-router-dom";
 function OrderList() {
 	const { user } = useAuth();
 	const [orderList, seTOrderList] = useState([]);
+	const navigate = useNavigate();
 	const handleCancelOrder = (_id) => {
 		fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
 			method: "DELETE",
@@ -13,6 +15,7 @@ function OrderList() {
 			.then((res) => res.json())
 			.then((data) => console.log(data));
 	};
+
 	useEffect(() => {
 		fetch("https://murmuring-lowlands-26250.herokuapp.com/orders")
 			.then((res) => res.json())
@@ -32,7 +35,12 @@ function OrderList() {
 		</Row>
 	) : (
 		<div className={style.noOrder}>
-			<h2>Sorry! Your don't have any order.</h2>
+			<div className="text-center">
+				<h2>Sorry! Your don't have any order.</h2>
+				<button onClick={() => navigate("/explore")} className="btn btn-dark">
+					Give an Order
+				</button>
+			</div>
 		</div>
 	);
 	return (

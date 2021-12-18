@@ -11,13 +11,34 @@ function ManageBooking() {
 			.then((res) => res.json())
 			.then((data) => console.log(data));
 	};
-
+	// update Order status
+	const updateOrderStatus = (_id) => {
+		const update = {
+			status: "Shipped",
+		};
+		fetch(`https://murmuring-lowlands-26250.herokuapp.com/orders/${_id}`, {
+			method: "PUT",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(update),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+			});
+	};
 	useEffect(() => {
 		fetch("https://murmuring-lowlands-26250.herokuapp.com/orders")
 			.then((res) => res.json())
 			.then((data) => seTOrderList(data));
-	}, [handleDeleteOrder]);
-	const buttonAndAction = ["Delete", "Confirm", handleDeleteOrder];
+	}, [handleDeleteOrder, updateOrderStatus]);
+	const buttonAndAction = [
+		"Delete",
+		"Confirm",
+		handleDeleteOrder,
+		updateOrderStatus,
+	];
 	return (
 		<div className="my-5 ">
 			<Container>
