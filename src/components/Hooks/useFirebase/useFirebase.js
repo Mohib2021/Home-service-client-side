@@ -25,6 +25,8 @@ const useFirebase = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [singleUser, setSingleUser] = useState({});
 	const [show, setShow] = useState(false);
+	const [showConfirmation, setShowConfirmation] = useState(false);
+	const [confirm, setConfirm] = useState(false);
 	const navigate = useNavigate();
 	const auth = getAuth();
 	// get user name
@@ -176,6 +178,8 @@ const useFirebase = () => {
 		show,
 		setShow,
 		logOut,
+		confirm,
+		setConfirm,
 		setError,
 		isLoading,
 		singleUser,
@@ -186,6 +190,8 @@ const useFirebase = () => {
 		loginWithGoogle,
 		getUserPassword,
 		getConfirmPassword,
+		showConfirmation,
+		setShowConfirmation,
 		loginWithEmailAndPassword,
 		registerWithEmailAndPassword,
 	};

@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
+import AlertBox from "../AlertBox/AlertBox";
 import style from "./Booking.module.css";
 function Booking() {
-	const { user } = useAuth();
+	const { user, setShow } = useAuth();
 	const [userName, setUserName] = useState(user.displayName);
 	const [userEmail, setUserEmail] = useState(user.email);
 	const nameRef = useRef();
@@ -45,8 +46,10 @@ function Booking() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				e.target.reset();
+				if (data.insertedId) {
+					setShow(true);
+				}
 			});
 	};
 	return (
@@ -54,6 +57,10 @@ function Booking() {
 			<Header />
 			<div className="my-5">
 				<Container>
+					<AlertBox
+						heading="Order Placed!"
+						message="Your order is successfully placed. Thank you."
+					/>
 					<div className={style.bookingContainer}>
 						<div className="text-center mb-4">
 							<h6>Confirm</h6>

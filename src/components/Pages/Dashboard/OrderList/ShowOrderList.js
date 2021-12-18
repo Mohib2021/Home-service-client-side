@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+
 import style from "./ShowOrderList.module.css";
 
 function ShowOrderList({ buttonAndAction, data }) {
@@ -28,7 +29,11 @@ function ShowOrderList({ buttonAndAction, data }) {
 					<Row className="  g-3">
 						<Col className="text-center" md={1} xs={12}>
 							<img
-								src={userPicture}
+								src={
+									userPicture?.length < 400
+										? userPicture
+										: "data:image/jpeg;base64," + userPicture
+								}
 								alt="user"
 								className="img-fluid rounded-circle"
 							/>
@@ -42,7 +47,11 @@ function ShowOrderList({ buttonAndAction, data }) {
 						</Col>
 						<Col className="text-center" md={2} xs={5}>
 							<img
-								src={productPhoto}
+								src={
+									productPhoto?.length < 400
+										? productPhoto
+										: "data:image/jpeg;base64," + productPhoto
+								}
 								className="img-fluid rounded"
 								alt="product"
 							/>

@@ -10,7 +10,7 @@ function Card({ data, deleteService, btnTxt }) {
 		<Col md={4} sm={12}>
 			<div className={style.card}>
 				<img
-					src={photo.length < 400 ? photo : "data:image/jpeg;base64," + photo}
+					src={photo.length < 300 ? photo : "data:image/jpeg;base64," + photo}
 					className="img-fluid rounded"
 					alt="service"
 				/>

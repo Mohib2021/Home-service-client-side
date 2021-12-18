@@ -6,8 +6,10 @@ import style from "./OrderList.module.css";
 import { useNavigate } from "react-router-dom";
 function OrderList() {
 	const { user } = useAuth();
+
 	const [orderList, seTOrderList] = useState([]);
 	const navigate = useNavigate();
+
 	const handleCancelOrder = (_id) => {
 		const confirmation = window.confirm("are you sure that you wan to cancel?");
 		if (confirmation) {
