@@ -1,13 +1,14 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import useAuth from "../../../../Hooks/useAuth/useAuth";
 import style from "./ShowAllUsers.module.css";
-function ShowAllUsers({ data }) {
-	const { displayName, email, photo, role } = data;
-	console.log(photo.length > 300);
+function ShowAllUsers({ data, updateRole }) {
+	const { displayName, email, photo, role, _id } = data;
+
 	return (
 		<Col md={12}>
 			<div className={style.userInfo}>
-				<Row className=" g-3 justify-content-center">
+				<Row className=" g-4 justify-content-center">
 					<Col md={1}>
 						<div className="text-center">
 							<h6>Photo</h6>
@@ -42,9 +43,19 @@ function ShowAllUsers({ data }) {
 						<div className="text-center">
 							<h6>Action</h6>
 							{role === "user" ? (
-								<button className="btn btn-outline-success">Make Admin</button>
+								<button
+									onClick={() => updateRole(role, _id)}
+									className="btn btn-outline-success"
+								>
+									Make Admin
+								</button>
 							) : (
-								<button className="btn btn-outline-danger">Make User</button>
+								<button
+									onClick={() => updateRole(role, _id)}
+									className="btn btn-outline-danger"
+								>
+									Make User
+								</button>
 							)}
 						</div>
 					</Col>

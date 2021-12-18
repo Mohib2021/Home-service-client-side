@@ -11,6 +11,7 @@ function ManageBooking() {
 			.then((res) => res.json())
 			.then((data) => console.log(data));
 	};
+
 	useEffect(() => {
 		fetch("https://murmuring-lowlands-26250.herokuapp.com/orders")
 			.then((res) => res.json())

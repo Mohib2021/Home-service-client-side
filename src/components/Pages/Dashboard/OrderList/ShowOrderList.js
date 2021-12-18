@@ -1,8 +1,11 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import useAuth from "../../../Hooks/useAuth/useAuth";
 import style from "./ShowOrderList.module.css";
 
 function ShowOrderList({ buttonAndAction, data }) {
+	const { updateOrderStatus } = useAuth();
 	const {
 		address,
 		email,
@@ -15,34 +18,39 @@ function ShowOrderList({ buttonAndAction, data }) {
 		status,
 		_id,
 	} = data;
+	const handleBtnDisable = (recentStatus) => {
+		if (recentStatus === "Shipped") {
+			return true;
+		} else return false;
+	};
 
 	return (
 		<>
 			<Col md={12}>
 				<div className={style.card}>
-					<Row className=" g-3">
-						<Col md={1} xs={3}>
+					<Row className="  g-3">
+						<Col className="text-center" md={1} xs={12}>
 							<img
 								src={userPicture}
 								alt="user"
 								className="img-fluid rounded-circle"
 							/>
 						</Col>
-						<Col md={3} xs={9}>
+						<Col className="text-center" md={3} xs={12}>
 							<h6>Ordered By</h6>
 							<div>
 								<b>{userName}</b> <br />
 								<span>{email}</span>
 							</div>
 						</Col>
-						<Col md={2} xs={5}>
+						<Col className="text-center" md={2} xs={5}>
 							<img
 								src={productPhoto}
 								className="img-fluid rounded"
 								alt="product"
 							/>
 						</Col>
-						<Col md={2} xs={7}>
+						<Col className="text-center" md={2} xs={7}>
 							<h6>Product Info</h6>
 							<div>
 								<b>{productName}</b> <br />
@@ -52,14 +60,14 @@ function ShowOrderList({ buttonAndAction, data }) {
 								</span>
 							</div>
 						</Col>
-						<Col md={2} xs={6}>
+						<Col className="text-center" md={2} xs={6}>
 							<h6>Shipping Address</h6>
-							<div>
+							<div className="fst-italic">
 								<span>{phone}</span> <br />
 								<span>{address}</span>
 							</div>
 						</Col>
-						<Col md={2} xs={6}>
+						<Col className="text-center" md={2} xs={6}>
 							<h6>Action</h6>
 							{buttonAndAction.length > 2 ? (
 								<div className="d-flex">
@@ -70,12 +78,17 @@ function ShowOrderList({ buttonAndAction, data }) {
 										{buttonAndAction[0]}
 									</button>{" "}
 									<br />
-									<button className="btn px-2 btn-success">
+									<button
+										disabled={handleBtnDisable(status)}
+										onClick={() => updateOrderStatus(_id)}
+										className="btn px-2 btn-success"
+									>
 										{buttonAndAction[1]}
 									</button>
 								</div>
 							) : (
 								<button
+									disabled={handleBtnDisable(status)}
 									onClick={() => buttonAndAction[1](_id)}
 									className="btn btn-danger"
 								>
