@@ -8,7 +8,13 @@ function AlertBox({ heading, message }) {
 		<>
 			<Modal style={{ zIndex: "4000" }} show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
-					<h3>{heading}</h3>
+					<h3
+						className={`${
+							heading.startsWith("Error") ? "text-danger" : "text-success"
+						}`}
+					>
+						{heading}
+					</h3>
 				</Modal.Header>
 				<Modal.Body>{message}</Modal.Body>
 				<Modal.Footer>

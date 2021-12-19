@@ -2,7 +2,6 @@ const userDashboardRoute = [
 	{ name: "Home", route: "/home" },
 	{ name: "Your Order List", route: "/dashboard/orderList" },
 	{ name: "Review", route: "/dashboard/review" },
-	{ name: "Pay", route: "/dashboard/pay" },
 ];
 export const adminDashboardRoute = [
 	{ name: "Home", route: "/home" },

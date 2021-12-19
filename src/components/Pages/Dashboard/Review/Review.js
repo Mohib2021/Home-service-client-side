@@ -1,4 +1,3 @@
-import { RecaptchaVerifier } from "firebase/auth";
 import React, { useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";

@@ -48,7 +48,7 @@ function App() {
 					>
 						<Route path="/dashboard" element={<Review />} />
 						<Route path="orderList" element={<OrderList />} />
-						<Route path="pay" element={<Pay />} />
+						<Route path="pay/:payId" element={<Pay />} />
 						<Route path="review" element={<Review />} />
 						<Route
 							path="handleService"

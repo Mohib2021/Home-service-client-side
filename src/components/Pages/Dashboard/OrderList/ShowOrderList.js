@@ -1,9 +1,11 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import style from "./ShowOrderList.module.css";
 
 function ShowOrderList({ buttonAndAction, data }) {
+	const navigate = useNavigate();
 	const {
 		address,
 		email,
@@ -14,6 +16,7 @@ function ShowOrderList({ buttonAndAction, data }) {
 		productPhoto,
 		productPrice,
 		status,
+		payment,
 		_id,
 	} = data;
 	const handleBtnDisable = (recentStatus) => {
@@ -74,32 +77,53 @@ function ShowOrderList({ buttonAndAction, data }) {
 							</div>
 						</Col>
 						<Col className="text-center" md={2} xs={6}>
-							<h6>Action</h6>
+							<h6>Actions</h6>
 							{buttonAndAction.length > 2 ? (
-								<div className="d-flex">
-									<button
-										onClick={() => buttonAndAction[2](_id)}
-										className="btn px-2 me-1 btn-danger"
-									>
-										{buttonAndAction[0]}
-									</button>{" "}
-									<br />
-									<button
-										disabled={handleBtnDisable(status)}
-										onClick={() => buttonAndAction[3](_id)}
-										className="btn px-2 btn-success"
-									>
-										{buttonAndAction[1]}
-									</button>
+								<div>
+									<div className="d-flex">
+										<button
+											onClick={() => buttonAndAction[2](_id)}
+											className="btn px-2 me-1 btn-danger"
+										>
+											{buttonAndAction[0]}
+										</button>{" "}
+										<br />
+										<button
+											disabled={handleBtnDisable(status)}
+											onClick={() => buttonAndAction[3](_id)}
+											className="btn px-2 btn-success"
+										>
+											{buttonAndAction[1]}
+										</button>
+									</div>
+									{payment ? (
+										<button className="btn btn-success mt-2">Paid</button>
+									) : (
+										<button className="btn btn-danger mt-2">Unpaid</button>
+									)}
 								</div>
 							) : (
-								<button
-									disabled={handleBtnDisable(status)}
-									onClick={() => buttonAndAction[1](_id)}
-									className="btn btn-danger"
-								>
-									{buttonAndAction[0]}
-								</button>
+								<div className="d-flex">
+									<button
+										disabled={handleBtnDisable(status)}
+										onClick={() => buttonAndAction[1](_id)}
+										className="btn me-1 btn-danger"
+									>
+										{buttonAndAction[0]}
+									</button>
+									{payment ? (
+										<button className="btn btn-success" disabled={true}>
+											Paid
+										</button>
+									) : (
+										<button
+											className="btn btn-success"
+											onClick={() => navigate(`/dashboard/pay/${_id}`)}
+										>
+											Pay{" "}
+										</button>
+									)}
+								</div>
 							)}
 						</Col>
 					</Row>

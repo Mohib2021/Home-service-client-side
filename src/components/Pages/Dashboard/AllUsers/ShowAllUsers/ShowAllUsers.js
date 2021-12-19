@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import useAuth from "../../../../Hooks/useAuth/useAuth";
+
 import style from "./ShowAllUsers.module.css";
 function ShowAllUsers({ data, updateRole }) {
 	const { displayName, email, photo, role, _id } = data;
