@@ -3,6 +3,8 @@ import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import { Container, Row } from "react-bootstrap";
 import Card from "../Card/Card";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 function Explore() {
 	const [services, setServices] = useState([]);
 	useEffect(() => {
@@ -19,11 +21,24 @@ function Explore() {
 						<h6>Explore</h6>
 						<h3> All of the Services</h3>
 					</div>
-					<Row className="g-4">
-						{services.map((service) => (
-							<Card key={service._id} btnTxt="Booking" data={service} />
-						))}
-					</Row>
+					{services.length ? (
+						<Row className="g-4">
+							{services.map((service) => (
+								<Card key={service._id} btnTxt="Booking" data={service} />
+							))}
+						</Row>
+					) : (
+						<Stack
+							sx={{ color: "grey.500" }}
+							spacing={2}
+							className="justify-content-center my-5"
+							direction="row"
+						>
+							<CircularProgress color="secondary" />
+							<CircularProgress color="success" />
+							<CircularProgress color="inherit" />
+						</Stack>
+					)}
 				</Container>
 			</div>
 			<Footer />
