@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Card from "../../Card/Card";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Service() {
 	const navigate = useNavigate();
@@ -22,11 +24,24 @@ function Service() {
 						delivers{" "}
 					</h3>
 				</div>
-				<Row className="g-4">
-					{services.map((service) => (
-						<Card key={service._id} btnTxt="Booking" data={service} />
-					))}
-				</Row>
+				{services.length ? (
+					<Row className="g-4">
+						{services.map((service) => (
+							<Card key={service._id} btnTxt="Booking" data={service} />
+						))}
+					</Row>
+				) : (
+					<Stack
+						sx={{ color: "grey.500" }}
+						spacing={2}
+						className="justify-content-center my-5"
+						direction="row"
+					>
+						<CircularProgress color="secondary" />
+						<CircularProgress color="success" />
+						<CircularProgress color="inherit" />
+					</Stack>
+				)}
 				<div className="mt-4 text-center">
 					<button onClick={() => navigate("/explore")} className="btn btn-dark">
 						Explore More

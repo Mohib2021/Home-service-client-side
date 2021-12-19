@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Carousel from "react-elastic-carousel";
 import ShowTestimonial from "./ShowTestimonial";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const breakPoints = [
 	{ width: 1, itemsToShow: 1 },
@@ -25,11 +27,24 @@ function Testimonial() {
 						What clients say <br /> About Us{" "}
 					</h3>
 				</div>
-				<Carousel breakPoints={breakPoints}>
-					{reviews.map((review) => (
-						<ShowTestimonial key={review._id} review={review} />
-					))}
-				</Carousel>
+				{reviews.length ? (
+					<Carousel breakPoints={breakPoints}>
+						{reviews.map((review) => (
+							<ShowTestimonial key={review._id} review={review} />
+						))}
+					</Carousel>
+				) : (
+					<Stack
+						sx={{ color: "grey.500" }}
+						spacing={2}
+						className="justify-content-center my-5"
+						direction="row"
+					>
+						<CircularProgress color="secondary" />
+						<CircularProgress color="success" />
+						<CircularProgress color="inherit" />
+					</Stack>
+				)}
 			</Container>
 		</div>
 	);
