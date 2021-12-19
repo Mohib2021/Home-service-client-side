@@ -9,7 +9,7 @@ function ShowAllUsers({ data, updateRole }) {
 		<Col md={12}>
 			<div className={style.userInfo}>
 				<Row className=" g-4 justify-content-center">
-					<Col md={1}>
+					<Col md={1} sm={6}>
 						<div className="text-center">
 							<h6>Photo</h6>
 							<img
@@ -21,25 +21,25 @@ function ShowAllUsers({ data, updateRole }) {
 							/>
 						</div>
 					</Col>
-					<Col md={4}>
+					<Col md={4} sm={6}>
 						<div className="text-center">
 							<h6>Name</h6>
 							<p>{displayName}</p>
 						</div>
 					</Col>
-					<Col md={4}>
+					<Col md={4} sm={5}>
 						<div className="text-center">
 							<h6>Email</h6>
-							<p>{email}</p>
+							<p className="small">{email}</p>
 						</div>
 					</Col>
-					<Col md={1}>
+					<Col md={1} sm={2}>
 						<div className="text-center">
 							<h6>Role</h6>
 							<p className="bg-success text-white rounded small">{role}</p>
 						</div>
 					</Col>
-					<Col md={2}>
+					<Col md={2} sm={5}>
 						<div className="text-center">
 							<h6>Action</h6>
 							{role === "user" ? (

@@ -45,7 +45,7 @@ function ShowOrderList({ buttonAndAction, data }) {
 							<h6>Ordered By</h6>
 							<div>
 								<b>{userName}</b> <br />
-								<span>{email}</span>
+								<span className="small">{email}</span>
 							</div>
 						</Col>
 						<Col className="text-center" md={2} xs={5}>
@@ -80,10 +80,10 @@ function ShowOrderList({ buttonAndAction, data }) {
 							<h6>Actions</h6>
 							{buttonAndAction.length > 2 ? (
 								<div>
-									<div className="d-flex">
+									<div>
 										<button
 											onClick={() => buttonAndAction[2](_id)}
-											className="btn px-2 me-1 btn-danger"
+											className="btn px-2 me-1 btn-outline-danger"
 										>
 											{buttonAndAction[0]}
 										</button>{" "}
@@ -91,7 +91,7 @@ function ShowOrderList({ buttonAndAction, data }) {
 										<button
 											disabled={handleBtnDisable(status)}
 											onClick={() => buttonAndAction[3](_id)}
-											className="btn px-2 btn-success"
+											className="btn mt-2 btn-outline-success"
 										>
 											{buttonAndAction[1]}
 										</button>
@@ -103,21 +103,24 @@ function ShowOrderList({ buttonAndAction, data }) {
 									)}
 								</div>
 							) : (
-								<div className="d-flex">
+								<div>
 									<button
 										disabled={handleBtnDisable(status)}
 										onClick={() => buttonAndAction[1](_id)}
-										className="btn me-1 btn-danger"
+										className="btn me-1 btn-outline-danger mt-0 mt-sm-2"
 									>
 										{buttonAndAction[0]}
 									</button>
 									{payment ? (
-										<button className="btn btn-success" disabled={true}>
+										<button
+											className="btn btn-outline-success mt-0 mt-sm-2"
+											disabled={true}
+										>
 											Paid
 										</button>
 									) : (
 										<button
-											className="btn btn-success"
+											className="btn btn-success mt-0 mt-sm-2"
 											onClick={() => navigate(`/dashboard/pay/${_id}`)}
 										>
 											Pay{" "}
