@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
@@ -14,7 +14,7 @@ function Booking() {
 	const emailRef = useRef();
 	const phoneRef = useRef();
 	const addressRef = useRef();
-
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const [service, setService] = useState({});
 	const { photo, name, price, description } = service;
@@ -81,7 +81,12 @@ function Booking() {
 									<h4 className="mt-2">{name}</h4>
 									<p>{description}</p>
 									<h5>${price}</h5>
-									<button className="btn btn-secondary">Go Back</button>
+									<button
+										onClick={navigate("/home")}
+										className="btn btn-secondary"
+									>
+										Go Back
+									</button>
 								</div>
 							</Col>
 							<Col md={6} sm={12}>
