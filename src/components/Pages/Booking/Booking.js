@@ -82,7 +82,7 @@ function Booking() {
 									<p>{description}</p>
 									<h5>${price}</h5>
 									<button
-										onClick={navigate("/home")}
+										onClick={() => navigate("/home")}
 										className="btn btn-secondary"
 									>
 										Go Back
