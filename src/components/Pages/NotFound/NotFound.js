@@ -6,14 +6,14 @@ import Header from "../../Shared/Header/Header";
 import styles from "./NotFound.module.css";
 function NotFound() {
 	return (
-		<div>
+		<div style={{ overflowX: "hidden" }}>
 			<Header />
 			<Row className="justify-content-center mb-5">
 				<Col md={6}>
 					<img
 						src="https://i.ibb.co/Tq6Mtmj/Page-not-found.png"
 						alt="page-not-found"
-						className="img-fluid"
+						className={styles.notFound}
 					/>
 					<div className="text-center">
 						<Link to="./home">
